@@ -9,13 +9,20 @@ const Tasks = () => {
   const tasks = useSelector(selectTasks);
   const dispatch = useDispatch();
 
-  return (
-    <div className={styles.listTask}>
-      {tasks?.map((item) => (
-        <Task item={item} key={item.id} dispatch={dispatch} />
-      ))}
-    </div>
-  );
+  const handleRenderTask = () => {
+    if (tasks.length === 0) {
+      return <div>There are no task left</div>;
+    }
+    
+    return (
+      <>
+        {tasks?.map((item) => (
+          <Task item={item} key={item.id} dispatch={dispatch} />
+        ))}
+      </>
+    );
+  };
+  return <div className={styles.listTask}>{handleRenderTask()}</div>;
 };
 
-export default Tasks
+export default Tasks;

@@ -1,8 +1,8 @@
 import React from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 import { Button, Form, Input, Radio } from "antd";
 
-import { addTask } from '../../redux/slice/todolistSlice';
+import { addTask } from "../../redux/slice/todolistSlice";
 import styles from "../../styles/Todo.module.scss";
 
 const FormCreate = () => {
@@ -20,13 +20,27 @@ const FormCreate = () => {
 
   return (
     <div>
-      <Form form={form} onFinish={onFinish} className={styles.formStyle}>
+      <Form
+        layout="horizontal"
+        labelCol={{ span: 3 }}
+        wrapperCol={{ span: 21 }}
+        form={form}
+        onFinish={onFinish}
+        labelAlign="left"
+        className={styles.formStyle}
+      >
         <Form.Item
           name="title"
           label="Title"
           rules={[{ required: true, message: "Please input task title!" }]}
         >
           <Input placeholder="Enter task title"></Input>
+        </Form.Item>
+        <Form.Item name="description" label="Description">
+          <Input.TextArea
+            row={4}
+            placeholder="Enter task title"
+          ></Input.TextArea>
         </Form.Item>
         <Form.Item
           name="status"
@@ -40,7 +54,7 @@ const FormCreate = () => {
           </Radio.Group>
         </Form.Item>
         <Button htmlType="submit" className={styles.buttonSubmit}>
-          Button
+          Add
         </Button>
       </Form>
     </div>
