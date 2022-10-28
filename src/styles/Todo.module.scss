@@ -1,6 +1,6 @@
 .todoWrapper {
   width: 90vw;
-  height: 50vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -10,6 +10,7 @@
   width: 50vw; 
   border: 1px solid black;
   padding: 20px !important;
+  border-radius: 5px;
 }
 
 .listTask {

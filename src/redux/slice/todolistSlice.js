@@ -5,13 +5,13 @@ export const todolistSlice = createSlice({
   initialState: {
     tasks: [
       {
-        id: 0,
+        id: '0',
         title: "Task 1",
         description: "Task decription",
         status: 0,
       },
       {
-        id: 1,
+        id: 'aaa',
         title: "Task 2",
         description: "Task 2 decription",
         status: 1,
@@ -34,19 +34,18 @@ export const todolistSlice = createSlice({
       const idTaskEdit = currentTask.findIndex(
         (item) => String(item.id) === String(payload.payload.id)
       );
-      console.log('currentTask:', currentTask )
-      console.log('pyalod:', payload.payload)
-      console.log("id:", idTaskEdit)
       const resultTasks = currentTask.map((item) =>
         item.id === payload.payload.id ? payload.payload : item
       );
-      console.log("reuslt:", resultTasks);
       state.tasks = resultTasks;
     },
+    updateAllTaskOrder: (state, payload) => {
+      state.tasks = payload.payload
+    }
   },
 });
 
-export const { addTask, removeTask, editTask, getTask } = todolistSlice.actions;
+export const { addTask, removeTask, editTask, getTask, updateAllTaskOrder } = todolistSlice.actions;
 
 export const selectTasks = (state) => state.todolist.tasks;
 
